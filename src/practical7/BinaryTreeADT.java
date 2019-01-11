@@ -16,4 +16,6 @@ public interface BinaryTreeADT<T> {
     public String preorderTraversal();
     public String postorderTraversal();
     public String inorderTraversal();
+    public void add(T data); //add by rray
+    public boolean search(T data); //search
 }

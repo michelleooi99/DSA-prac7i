@@ -9,7 +9,7 @@ package practical7;
  *
  * @author Tarc
  */
-public class BinaryTree<T> implements BinaryTreeADT<T> {
+public class BinaryTree<T extends Comparable<T>> implements BinaryTreeADT<T>  {
     
     Node root;
     
@@ -79,5 +79,66 @@ public class BinaryTree<T> implements BinaryTreeADT<T> {
         }
         
         return str;
+    }
+    
+    //using array
+    public void add(T data) {
+        Node newNode = new Node(data);
+        
+        if (root == null) {
+            root = newNode;
+        }
+        
+        else {
+            addEntry(root, newNode);
+        }
+    }
+    
+    private void addEntry(Node root, Node newNode) {
+        
+        if (newNode.data.compareTo(root.data) < 0) {
+            if (root.left == null) {
+                root.left = newNode;
+            }
+            
+            else {
+                addEntry(root.left, newNode);
+            }
+        }
+        
+        else {
+            if (root.right == null) {
+                root.right = newNode;
+            }
+            
+            else {
+                addEntry(root.right, newNode);
+            }
+        }
+    }
+    
+    public boolean search(T data) {
+        return searchEntry(data, root);
+    }
+    
+    private boolean searchEntry(T entry, Node root) {
+        
+        if (root == null) {
+            return false;
+        }
+        
+        else {
+            if (entry == root.data) {
+                return true;
+            }
+            
+            else if (entry.compareTo((T)root.data) < 0) {
+                return searchEntry(entry, root.left);
+            }
+            
+            else {
+                return searchEntry(entry, root.right);
+            }
+        }
     }
 } 

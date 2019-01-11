@@ -9,7 +9,7 @@ package practical7;
  *
  * @author Tarc
  */
-public class Node<T> {
+public class Node<T extends Comparable<T>>  {
     T data;
     Node left;
     Node right;

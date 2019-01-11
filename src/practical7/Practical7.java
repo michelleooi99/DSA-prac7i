@@ -13,6 +13,7 @@ public class Practical7 {
     
     public static void main(String[] args) {
         
+        //normal way
         BinaryTreeADT<Integer> t1 = new BinaryTree();
         BinaryTreeADT<Integer> t2 = new BinaryTree();
         BinaryTreeADT<Integer> t3 = new BinaryTree();
@@ -20,7 +21,7 @@ public class Practical7 {
         BinaryTreeADT<Integer> leftTree = new BinaryTree();
         BinaryTreeADT<Integer> rightTree = new BinaryTree();
         BinaryTreeADT<Integer> myTree = new BinaryTree();
-        
+                
         t1.setTree(2);
         t2.setTree(4);
         t3.setTree(6);
@@ -31,13 +32,35 @@ public class Practical7 {
         
         myTree.setTree(5, leftTree, rightTree);
         
-        System.out.println("Pre-order Traversal : ");
-        System.out.println(myTree.preorderTraversal() + "\n");
+        System.out.println("Build tree : ");
+        System.out.print("1. Pre-order Traversal : ");
+        System.out.println(myTree.preorderTraversal());
+        System.out.print("2. Post-order Traversal : ");
+        System.out.println(myTree.postorderTraversal());
+        System.out.print("3. In-order Traversal : ");
+        System.out.println(myTree.inorderTraversal() + "\n");
         
-        System.out.println("Post-order Traversal : ");
-        System.out.println(myTree.postorderTraversal() + "\n");
+        //using array
+        BinaryTreeADT<Integer> newTree = new BinaryTree();
+        int[] a = { 5, 3, 7, 2, 4, 6, 8 };
         
-        System.out.println("In-order Traversal : ");
-        System.out.println(myTree.inorderTraversal());
+        for (int i = 0; i < a.length; i++) {
+            newTree.add(a[i]);
+        }
+        
+        System.out.println("Build tree (array) : ");
+        System.out.print("1. Pre-order Traversal : ");
+        System.out.println(newTree.preorderTraversal());
+        System.out.print("2. Post-order Traversal : ");
+        System.out.println(newTree.postorderTraversal());
+        System.out.print("3. In-order Traversal : ");
+        System.out.println(newTree.inorderTraversal() + "\n");
+        
+        
+        //search
+        System.out.println("Search results : ");
+        System.out.println(newTree.search(0));
+        System.out.println(newTree.search(2));
+
     }
 }
